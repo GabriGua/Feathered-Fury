@@ -8,17 +8,19 @@ public class VisualizeHealthbar : MonoBehaviour
     BirdLife BirdLife;
     float life;
     [SerializeField]GameObject bar;
-    GameObject barShadow;
+    [SerializeField] GameObject barShadow;
     GameObject bird;
     bool follow = false;
 
     Image barImage;
+    Image barImageShadow;
     //event
     public event Action<GameObject> OnHitOccurred;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void OnEnable()
     {
         barImage = bar.GetComponent<Image>();
+        barImageShadow = barShadow.GetComponent<Image>();
         OnHitOccurred += HitOccured;
     }
 
@@ -29,6 +31,7 @@ public class VisualizeHealthbar : MonoBehaviour
         BirdLife = bird.GetComponent<BirdLife>();
         life = BirdLife.life;
         
+        barImageShadow.fillAmount = life/100;
         barImage.fillAmount = (life - 5f)/100;
         if(life <= 0)
         {

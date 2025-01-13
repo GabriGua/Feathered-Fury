@@ -3,6 +3,7 @@ using System.Collections;
 
 public class BirdsSpawn : MonoBehaviour
 {
+    [SerializeField] VisualizeRounds visualizeRounds;
 
     [SerializeField] private GameObject birds;
     [SerializeField] private GameObject BlueBirds;
@@ -27,15 +28,20 @@ public class BirdsSpawn : MonoBehaviour
     }
     void NextRound()
     {
-        redBird = CoreRoundSystem(round);
+        redBird = CoreRoundSystem(round)/3*2;
+        blueBird = redBird / 2;
+        Debug.Log(redBird);
+        StartCoroutine(SpawningBirds(redBird));
+        StartCoroutine(SpawningBlueBirds(blueBird));
     }
 
     //Red Bird
     IEnumerator SpawningBirds(int bird)
     {
-        
-        while (countred< bird) // Loop infinito
+        countred = 0;
+        while (countred < bird) // Loop infinito
         {
+            totalbird++;
             int randomDelay = Random.Range(1, 4);
             yield return new WaitForSeconds(randomDelay);
 
@@ -56,7 +62,7 @@ public class BirdsSpawn : MonoBehaviour
                 countred++;
             }
         }
-        totalbird = totalbird + countred;
+        
 
     }
 
@@ -64,8 +70,10 @@ public class BirdsSpawn : MonoBehaviour
 
     IEnumerator SpawningBlueBirds(int blue)
     {
+        countblue = 0;
         while (countblue < blue) // Loop infinito
         {
+            totalbird++;
             int randomDelay = Random.Range(1, 4);
             yield return new WaitForSeconds(randomDelay);
 
@@ -86,18 +94,20 @@ public class BirdsSpawn : MonoBehaviour
                 countblue++;
             }
         }
-        totalbird = totalbird + countblue;
+        
 
     }
 
     public void BirdDecount()
     {
-        if (totalbird > 0) 
-        {totalbird--;}
-        else if(totalbird <= 0)
-        { 
+        if (totalbird > 0)
+        { totalbird--; }
+        
+        if (totalbird <= 0)
+        {
             round++;
             NextRound();
+            visualizeRounds.NextRound();
         }
     }
     public int CoreRoundSystem(float x, float maxValue = 40f, float speed = 6f)
@@ -112,5 +122,12 @@ public class BirdsSpawn : MonoBehaviour
         // Calcola il valore iperbolico e arrotonda all'intero più vicino
         float rawValue = (maxValue * x) / (x + speed);
         return Mathf.RoundToInt(rawValue);
+    }
+    private void Update()
+    {
+        
+        Debug.Log("Total Bird: " + totalbird);
+        Debug.Log("Total Round: " + round);
+        Debug.Log("Total Reds: " + redBird);
     }
 }
