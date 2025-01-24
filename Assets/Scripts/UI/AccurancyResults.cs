@@ -1,10 +1,12 @@
 ﻿using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class AccurancyResults : MonoBehaviour
 {
     TextMeshProUGUI TextMeshProUGUI;
     [SerializeField] TextMeshProUGUI resultAim;
+    [SerializeField] Image skull;
     VisualizeRounds VisualizeRounds;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -53,7 +55,8 @@ public class AccurancyResults : MonoBehaviour
         }
         else if (result == 100)
         {
-            resultAim.text = "☠️";
+            resultAim.text = "";
+            skull.enabled = true;
         }
         
     }
