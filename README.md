@@ -44,6 +44,10 @@ The game takes place in a flat forest, with mountains visible in the background.
 
 Community contributions are welcome! If you'd like to propose improvements or report bugs, feel free to open a **Pull Request** or an **Issue**.
 
+## 🔍 Transparency
+
+As part of being transparent, please note that some graphical elements (specifically, **all buttons and menus in bird nest style, and the logo**) were generated using **AI** tools. These assets were then customized and adapted to fit the overall theme of the game. This was an intentional part of the creative process.
+
 ## 📜 License
 
 The source code and all assets related to **Feathered Fury** are the intellectual property of the game creator. Use, distribution, modification, or any other type of usage of the code and project is not allowed without the explicit consent of the creator.
