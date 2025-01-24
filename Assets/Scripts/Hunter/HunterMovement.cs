@@ -3,7 +3,7 @@ using UnityEngine.InputSystem;
 
 public class HunterMovement : MonoBehaviour
 {
-    float speed = 20f;
+    float speed = 25f;
     float horizontal;
     Rigidbody2D rb;
 

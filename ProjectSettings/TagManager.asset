@@ -12,6 +12,8 @@ TagManager:
   - Terrain
   - Egg
   - XEgg
+  - Bullet
+  - Cursor
   layers:
   - Default
   - TransparentFX
@@ -20,7 +22,7 @@ TagManager:
   - Water
   - UI
   - Eggs
-  - 
+  - Bullet
   - 
   - 
   - 

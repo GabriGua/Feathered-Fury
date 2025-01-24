@@ -2,6 +2,9 @@ using UnityEngine;
 
 public class GunRotation : MonoBehaviour
 {
+    [SerializeField] GameObject gunMuzzle;
+    [SerializeField] GameObject posGunMuzzle;
+    [SerializeField] GameObject pos2GunMuzzle;
     public Camera mainCamera; // Assicurati di collegare la camera principale
     [SerializeField] private SpriteRenderer spRender;
 
@@ -19,18 +22,19 @@ public class GunRotation : MonoBehaviour
 
         // Calcola la rotazione desiderata
         float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
-  
+
         // Applica la rotazione all'oggetto
         transform.rotation = Quaternion.Euler(new Vector3(0, 0, angle - 90));
 
-        if(angle < 90 && angle > -90)
+        if (angle < 90 && angle > -90)
         {
             spRender.flipY = false;
-
+            gunMuzzle.transform.position = posGunMuzzle.transform.position;
         }
         else
         {
             spRender.flipY = true;
+            gunMuzzle.transform.position = pos2GunMuzzle.transform.position;
         }
     }
 

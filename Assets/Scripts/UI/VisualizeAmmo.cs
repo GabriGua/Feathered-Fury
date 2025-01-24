@@ -11,7 +11,7 @@ public class VisualizeAmmo : MonoBehaviour
     void Start()
     {
         ammoText = GetComponent<TextMeshProUGUI>();
-        
+
     }
 
     // Update is called once per frame
@@ -23,7 +23,7 @@ public class VisualizeAmmo : MonoBehaviour
     void Shotgun()
     {
 
-        ammoText.text = weaponSystem.ammo + " / 5"; 
-        
+        ammoText.text = weaponSystem.ammo + " / " + weaponSystem.maxAmmo;
+
     }
 }

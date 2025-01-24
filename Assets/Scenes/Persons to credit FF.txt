@@ -3,3 +3,9 @@ Persons to credit FF:
 Background: https://itch.io/search?q=forest&type=games&classification=assets#:~:text=or%20metroidvania%20games!-,MamaNeZakon,-Rated%204.4%20out
 
 OST: Zane Little Music
+
+Shotgun: 
+	/shoot: Michel Baradari
+	/reload:
+//Menu Selection: NenadSimic (OPGM)
+//Explosion: marcelofg55

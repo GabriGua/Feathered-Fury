@@ -3,10 +3,20 @@ using UnityEngine;
 public class LifePoints : MonoBehaviour
 {
     [SerializeField] ExplosiveArea ExplosiveArea;
+    [SerializeField] GameObject playButton;
+    [SerializeField] ResetAnimation ResetAnimation;
+    [SerializeField] BirdsSpawn birdsSpawn;
     public int life = 6;
     int counterlife = 6;
     public bool GameOver=false;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
+
+
+    private void Awake()
+    {
+        Time.timeScale = 1f;
+    }
+
     void Start()
     {
         
@@ -38,6 +48,7 @@ public class LifePoints : MonoBehaviour
                 if(counterlife > 0)
                 {
                     counterlife--;
+                    IsDead();
                 }
                 
             }
@@ -49,6 +60,7 @@ public class LifePoints : MonoBehaviour
                     counterlife--;
                     counterlife--;
                     counterlife--;
+                    IsDead();
                 }
 
             }
@@ -60,11 +72,39 @@ public class LifePoints : MonoBehaviour
     {
         
         counterlife--;
+        IsDead();
 
     }
     public void SecondCircle()
     {
         
         counterlife--;
+        IsDead();
+    }
+
+    void IsDead()
+    {
+        if(counterlife <= 0)
+        {
+            birdsSpawn.StopCoroutines();
+            ResetAnimation.MoveToScene(2);
+            
+        }
+    }
+
+    public void AddHeart()
+    {
+        if (life > 0 && life < 10 && life != 9)
+        {
+
+            life = life + 2;
+            counterlife = counterlife + 2;
+        }
+        else if (life == 9)
+        {
+            life++;
+            counterlife++;
+        }
+
     }
 }

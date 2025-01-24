@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3a494188687056042a4dc95420f0f307, type: 3}
+  m_Name: BonusHeart
+  m_EditorClassIdentifier: 
+  bonusName: Heart
+  bonusSprite: {fileID: 4824328389704425691, guid: 162495110a112ad49935bfa43ad70768, type: 3}
+  bonusDescription: It adds a additional heart or restore one of your lost ones.
+    Max 5

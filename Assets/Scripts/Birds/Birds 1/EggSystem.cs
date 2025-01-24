@@ -4,6 +4,9 @@ public class EggSystem : MonoBehaviour
 {
     CapsuleCollider2D eggCollider;
     Animator animator;
+    Rigidbody2D rb;
+
+    BonusCore bonusCore;
 
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -11,13 +14,13 @@ public class EggSystem : MonoBehaviour
     {
         eggCollider = GetComponent<CapsuleCollider2D>();
         animator = GetComponent<Animator>();
+        rb = GetComponent<Rigidbody2D>();
+        bonusCore = FindAnyObjectByType<BonusCore>();
+
+        rb.gravityScale = bonusCore.gravity;
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+  
 
     private void OnCollisionEnter2D(Collision2D collision)
     {

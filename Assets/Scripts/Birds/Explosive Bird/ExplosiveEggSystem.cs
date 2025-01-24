@@ -6,13 +6,20 @@ public class ExplosiveEggSystem : MonoBehaviour
     [SerializeField] GameObject SecondCircle;
     CapsuleCollider2D eggCollider;
     Animator animator;
+    Rigidbody2D rb;
 
+    BonusCore bonusCore;
+    
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         eggCollider = GetComponent<CapsuleCollider2D>();
         animator = GetComponent<Animator>();
+        rb = GetComponent<Rigidbody2D>();
+        bonusCore = FindAnyObjectByType<BonusCore>();
+
+        rb.gravityScale = bonusCore.gravity;
     }
 
     // Update is called once per frame
@@ -25,7 +32,7 @@ public class ExplosiveEggSystem : MonoBehaviour
     {
         if (collision.collider != null)
         {
-            if(collision.collider.tag == "Hunter")
+            if (collision.collider.tag == "Hunter")
             {
                 eggCollider.enabled = false;
                 animator.Play("Destruction");
@@ -37,7 +44,7 @@ public class ExplosiveEggSystem : MonoBehaviour
                 eggCollider.enabled = false;
                 animator.Play("Destruction");
             }
-
+            
         }
     }
 }

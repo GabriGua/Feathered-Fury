@@ -5,8 +5,11 @@ public class BirdsSpawn : MonoBehaviour
 {
     [SerializeField] VisualizeRounds visualizeRounds;
 
+
     [SerializeField] private GameObject birds;
     [SerializeField] private GameObject BlueBirds;
+
+    [SerializeField] GameObject BonusSelection;
     private int round = 1;
     int redBird, blueBird;
     int countred = 0, countblue = 0;
@@ -28,11 +31,25 @@ public class BirdsSpawn : MonoBehaviour
     }
     void NextRound()
     {
-        redBird = CoreRoundSystem(round)/3*2;
+        redBird = CoreRoundSystem(round) / 3 * 2;
         blueBird = redBird / 2;
-        Debug.Log(redBird);
-        StartCoroutine(SpawningBirds(redBird));
-        StartCoroutine(SpawningBlueBirds(blueBird));
+
+        if ((round % 4) == 0)
+        {
+            if (BonusSelection != null)
+            {
+                BonusSelection.SetActive(true);
+            }
+            Time.timeScale = 0;
+            StartCoroutine(SpawningBirds(redBird));
+            StartCoroutine(SpawningBlueBirds(blueBird));
+        }
+        else
+        {
+            StartCoroutine(SpawningBirds(redBird));
+            StartCoroutine(SpawningBlueBirds(blueBird));
+        }
+
     }
 
     //Red Bird
@@ -43,6 +60,7 @@ public class BirdsSpawn : MonoBehaviour
         {
             totalbird++;
             int randomDelay = Random.Range(1, 4);
+            //GameObject birdSpawn = BirdsPool.Instance.GetBird();
             yield return new WaitForSeconds(randomDelay);
 
             int randomSide = Random.Range(1, 3);
@@ -51,6 +69,9 @@ public class BirdsSpawn : MonoBehaviour
             {
                 float randomY = Random.Range(1f, 4.1f);
                 Vector3 spawnPosition = new Vector3(-7.5f, randomY, 0);
+               /* birdSpawn.transform.position = spawnPosition;
+                birdSpawn.transform.rotation = Quaternion.identity;
+                birdSpawn.SetActive(true);*/
                 Instantiate(birds, spawnPosition, Quaternion.identity);
                 countred++;
             }
@@ -58,11 +79,14 @@ public class BirdsSpawn : MonoBehaviour
             {
                 float randomY = Random.Range(1f, 4.1f);
                 Vector3 spawnPosition = new Vector3(7.5f, randomY, 0);
+                /*birdSpawn.transform.position = spawnPosition;
+                birdSpawn.transform.rotation = Quaternion.identity;
+                birdSpawn.SetActive(true);*/
                 Instantiate(birds, spawnPosition, Quaternion.identity);
                 countred++;
             }
         }
-        
+
 
     }
 
@@ -94,7 +118,7 @@ public class BirdsSpawn : MonoBehaviour
                 countblue++;
             }
         }
-        
+
 
     }
 
@@ -102,7 +126,7 @@ public class BirdsSpawn : MonoBehaviour
     {
         if (totalbird > 0)
         { totalbird--; }
-        
+
         if (totalbird <= 0)
         {
             round++;
@@ -123,11 +147,9 @@ public class BirdsSpawn : MonoBehaviour
         float rawValue = (maxValue * x) / (x + speed);
         return Mathf.RoundToInt(rawValue);
     }
-    private void Update()
+
+    public void StopCoroutines()
     {
-        
-        Debug.Log("Total Bird: " + totalbird);
-        Debug.Log("Total Round: " + round);
-        Debug.Log("Total Reds: " + redBird);
+        StopAllCoroutines();
     }
 }
