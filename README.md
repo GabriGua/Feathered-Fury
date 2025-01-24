@@ -29,7 +29,7 @@ The game takes place in a flat forest, with mountains visible in the background.
 
 ## 📥 Installation
 
-1. Go to the **[Feathered Fury page on itch.io]((https://sg4bb0dev.itch.io/feathered-fury))**.
+1. Go to the **[Feathered Fury page on itch.io](https://sg4bb0dev.itch.io/feathered-fury)**.
 2. Download the `.zip` file for Windows.
 3. Extract the contents of the `.zip` file.
 4. Run **Feathered Fury.exe** to play.
