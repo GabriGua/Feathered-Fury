@@ -1,6 +1,6 @@
 # 🦅 Feathered Fury
 
-**Feathered Fury** is a fast-paced 2D game set in a forest where players face increasing waves of threatening birds that drop dangerous eggs. The goal of the game is to survive as long as possible, dodge the eggs, and shoot down the birds. The game is designed in **pixel art** style, with most of the assets created from scratch.
+**Feathered Fury** is a fast-paced 2D game set in a forest where players face increasing waves of threatening birds that drop dangerous eggs. The goal of the game is to survive as long as possible, dodge the eggs, and shoot down the birds. The game is designed in **pixel art** style, with most of the assets created from scratch. I worked on this game for all the moth of January and it was a big channel to me to complete it on time!
 
 ## 🎮 Game Description
 
